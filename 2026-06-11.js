@@ -43,3 +43,21 @@ function printScoreReport(scores) {
     console.log(score + "점: " + grade + "등급, " + pass);
   });
 }
+function printSummary(scores) {
+  console.log("평균 점수: " + getAverage(scores) + "점");
+  console.log("합격 점수: " + getPassedScores(scores).join(","));
+  console.log("점수 설명:");
+  const messages = getScoreMessages(scores);
+  messages.forEach((msg) => {
+    console.log(msg);
+  });
+}
+const names = ["민수", "지은", "도윤", "서연", "하준", "유나", "지호"];
+function printNamedScoreReport(names, scores) {
+  names.forEach((name, index) => {
+    const score = scores[index];
+    const grade = getGrade(score);
+    const pass = isPassed(score) ? "합격" : "불합격";
+    console.log(name + ": " + score + "점, " + grade + "등급, " + pass);
+  });
+}
