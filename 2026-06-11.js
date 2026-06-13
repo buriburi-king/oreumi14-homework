@@ -26,3 +26,20 @@ function getAverage(scores) {
   }
   return sum / scores.length;
 }
+function getPassedScores(scores) {
+  const highscore = scores.filter((scores) => scores >= 60);
+  return highscore;
+}
+function getScoreMessages(scores) {
+  return scores.map((score) => {
+    const grade = getGrade(score);
+    return score + "점은 " + grade + "등급입니다.";
+  });
+}
+function printScoreReport(scores) {
+  scores.forEach((score) => {
+    const grade = getGrade(score);
+    const pass = isPassed(score) ? "합격" : "불합격";
+    console.log(score + "점: " + grade + "등급, " + pass);
+  });
+}
